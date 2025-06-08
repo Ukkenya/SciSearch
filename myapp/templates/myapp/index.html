@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciSearch - Поиск научных источников</title>
+    <link rel="stylesheet" href="{% static 'vendor/css/index.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{% url 'index' %}" id="main-link"><h1>SciSearch</h1></a>
+        </header>
+        <h2>Автоматический поиск научных источников</h2>
+
+        <form method="get">
+        <div class="search-filters">
+            <div class="filter-group">
+                <label>
+                    <img src="{% static 'vendor/img/book.png' %}">
+                    Тип источника
+                </label>
+                <select class="other" name="type">
+                    <option selected value="all" {% if type == 'all' %}selected{% endif %}>Отображать все</option>
+                    <option value="dissert" {% if type == 'dissert' %}selected{% endif %}>Диссертация/автореферат диссертации</option>
+                    <option value="stat" {% if type == 'stat' %}selected{% endif %}>Научная статья</option>
+                    <option value="conf" {% if type == 'conf' %}selected{% endif %}>Материалы научной конференции</option>
+                    <option value="book" {% if type == 'book' %}selected{% endif %}>Книга</option>
+                </select>
+            </div>
+            <div class="filter-group year-filter-group">
+            <label>
+                <img src="{% static 'vendor/img/date.png' %}">
+                Год публикации
+            </label>
+            <div class="year-range">
+                <div class="year-select-wrapper">
+                    <span class="year-label">От:</span>
+                    <select class="year-select" name="year-one">
+                        <option selected value="all">-</option>
+                        {% for year in years %}
+                        <option value="{{ year }}" {% if year == sel_year_one %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="year-select-wrapper">
+                    <span class="year-label">До:</span>
+                    <select class="year-select" name="year-two">
+                        <option selected value="all">-</option>
+                        {% for year in years %}
+                        <option value="{{ year }}" {% if year == sel_year_two %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+            <div class="filter-group">
+                <label>
+                    <img src="{% static 'vendor/img/lang.png' %}">
+                    Язык
+                </label>
+                <select class="other" name="lang">
+                    <option value="ru" {% if lang == 'ru' %}selected{% endif %}>Русский</option>
+                    <option value="en" {% if lang == 'en' %}selected{% endif %}>Английский</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="sorting">
+            <label id="sort-text">Сортировка:</label>
+            <select class="other" name="select-sort">
+                <option value="rel" {% if sort == 'rel' %}selected{% endif %}>По релевантности (по умолчанию)</option>
+                <option value="year" {% if sort == 'year' %}selected{% endif %}>По дате публикации</option>
+                <option value="author" {% if sort == 'author' %}selected{% endif %}>По автору</option>
+            </select>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" class="search-input" name="search_input" placeholder="Введите ключевые слова, автора или название статьи..." value="{{ search_input }}">
+            <button class="search-button" type="submit">
+                <img id="search-img" src="{% static 'vendor/img/search.png' %}">
+                Поиск
+            </button>
+        </div>
+        </form>
+
+
+        {% if articles %}
+        <div class="results">
+            {% for article in articles %}
+            <div class="result-card">
+                <a href="{{ article.url }}" class="result-title" target="_blank">{{ article.title }}</a>
+                <div class="result-meta"><b>Авторы:</b> {{ article.authors }}</div>
+                <div class="result-meta"><b>Год публикации:</b> {{ article.year }}</div>
+                <p class="result-description">
+                    <b>Аннотация:</b> {% if article.abstract %}
+                        {{ article.abstract }}
+                    {% else %}
+                        <em>Аннотация отсутствует</em>
+                    {% endif %}
+                </p><br>
+                <p class="result-description"><b><a href="{{article.url}}" id="link-public">Ссылка на научный источник</a></b></p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+</div>
+</body>
+</html>

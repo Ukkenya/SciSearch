@@ -1,0 +1,301 @@
+@font-face {
+    font-family: 'Mate SC';
+    src: url('../fonts/MateSC-Regular.woff2') format('woff2'),
+         url('../fonts/MateSC-Regular.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+html, body {
+    background: linear-gradient(135deg, #4693E5, #1E3361, #000000, #1E3361, #4693E5);
+    background-attachment: fixed;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    font-family: 'Mate SC', Arial, sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.search-filters {
+    display: flex;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    align-items: flex-end;
+}
+
+.filter-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+img {
+    width: 18px;
+    height: auto;
+}
+
+#search-img {
+    width: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    text-align:center;
+}
+#sort-text{
+    text-align: left;
+}
+input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+
+}
+
+select.other{
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    appearance: none; /* Убирает стандартную стрелку */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 40px; /* Увеличьте отступ для кастомной стрелки */
+}
+
+select.data{
+    width: 42%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    appearance: none; /* Убирает стандартную стрелку */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 40px; /* Увеличьте отступ для кастомной стрелки */
+}
+
+.sorting {
+    margin-bottom: 20px;
+}
+
+.sorting label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.sorting select {
+    width: 100%;
+    padding: 12px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.search-button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+    height: 48px;
+}
+
+.search-button:hover {
+    background: #4338ca;
+}
+
+.results {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.result-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+}
+
+.result-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.result-meta {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+}
+
+.result-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+
+/* Стили для выбора года */
+.year-filter-group {
+    flex: 1.5;
+    min-width: 0; /* Важно для правильного сжатия */
+}
+
+.year-range {
+    display: flex;
+    gap: 8px; /* Уменьшенный отступ */
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.year-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Уменьшенный отступ */
+    min-width: 0; /* Важно для правильного сжатия */
+    flex: 1 1 auto;
+}
+
+.year-label {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    flex-shrink: 0; /* Запрещаем сжатие */
+}
+
+.year-select {
+    width: 100%;
+    min-width: 60px; /* Минимальная ширина поля */
+    padding: 10px 30px 10px 10px; /* Уменьшенный padding */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px; /* Уменьшенный размер шрифта */
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+#link-public{
+    color: white;
+    font-size: 16px;
+}
+
+#main-link{
+     text-decoration: none;
+     color: white;
+}
+/* Адаптация для узких экранов */
+@media (max-width: 900px) {
+    .year-range {
+        flex-wrap: wrap;
+    }
+
+    .year-select-wrapper {
+        flex: 1 1 calc(50% - 4px);
+    }
+}
+
+@media (max-width: 600px) {
+    .year-select-wrapper {
+        flex: 1 1 100%;
+    }
+
+    .year-select {
+        font-size: 13px;
+        padding: 8px 25px 8px 8px;
+    }
+}
+
